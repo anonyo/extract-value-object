@@ -28,5 +28,16 @@ describe Score do
 
       expect(grade_score.rating).to eq('F')
     end
+    it 'returns nothing when negative number is passed as score' do
+      grade_score = Score.new(-4)
+
+      expect(grade_score.rating).to eq nil
+    end
+    it 'returns nothing when number more than 100 is passed as score' do
+      grade_score = Score.new(500)
+
+      expect(grade_score.rating).to eq nil
+    end
+
   end
 end
