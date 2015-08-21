@@ -4,7 +4,7 @@ class Score
     @score = score
   end
 
-  def rating
+  def scores_list
     failing_mark = FailingMark.new(score)
     d_mark = DMark.new(score)
     c_mark = CMark.new(score)
@@ -12,8 +12,14 @@ class Score
     a_mark = AMark.new(score)
     no_score = NoScore.new(score)
 
-    scores_list = [ failing_mark, d_mark, c_mark, b_mark, a_mark, no_score ]
-    find_score = scores_list.find { |score| score.matches? }
+    [ failing_mark, d_mark, c_mark, b_mark, a_mark, no_score ]
+  end
+
+  def find_score
+    scores_list.find { |score| score.matches? }
+  end
+
+  def rating
     find_score.execute
   end
 end
