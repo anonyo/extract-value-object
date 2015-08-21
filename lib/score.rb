@@ -5,9 +5,10 @@ class Score
   end
 
   def rating
-    fail = FailingMark.new(score)
+    failing_mark = FailingMark.new(score)
+    d_mark = DMark.new(score)
 
-    scores_list = [ fail ]
+    scores_list = [ failing_mark ]
     find_score = scores_list.find { |score| score.matches? }
     find_score.execute
 
